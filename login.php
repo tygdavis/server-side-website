@@ -11,6 +11,9 @@ if (isset($_COOKIE['visited_before'])) {
     setcookie('visited_before', 'yes', time() + 60*60*24*365, '/');
 }
 
+// if being redirected from register.php, fill the email field
+$registerEmail = $_GET['email'];
+
 $emailError    = "";
 $passwordError = "";
 
@@ -63,6 +66,15 @@ if ($_SERVER['REQUEST_METHOD']==="POST" && isset($_POST['login'])) {
             ");
             $stmt->execute([$_SESSION["user_id"], $_SESSION["user_email"]]);
 
+
+            // try to update orders if user email = orders.email after a successful login
+            $stmt = $pdo->prepare("
+                UPDATE orders
+                SET user_id = ?
+                WHERE user_id IS NULL
+                AND EMAIL = ?
+            ");
+            $stmt->execute([$_SESSION["user_id"], $_SESSION["user_email"]]);
             // redirect to account page
             header("Location: index.php?page=account");
             exit;
@@ -94,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD']==="POST" && isset($_POST['login'])) {
                         id="email"
                         name="email"
                         type="email"
-                        value="<?= htmlspecialchars($lastEmail) ?>"
+                        value="<?= htmlspecialchars($registerEmail ?? $lastEmail) ?>"
                         required
                     >
                     <p class="field-error" id="emailError">

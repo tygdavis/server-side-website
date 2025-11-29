@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	if (deliveryRadio && pickupRadio) {
 		deliveryRadio.addEventListener("change", handleDeliveryChange);
 		pickupRadio.addEventListener("change", handleDeliveryChange);
+		toggleFields();
 	}
 
 	if (paymentBox && checkoutBtn) {
@@ -56,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 
 	// scroll to payment box
-	if (paymentBox.classList.contains("scroll")) {
+	if (paymentBox && paymentBox.classList.contains("scroll")) {
 		paymentBox.scrollIntoView({ behavior: "smooth", block: "start" });
 	}
 

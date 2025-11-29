@@ -67,23 +67,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         empty($errors)
     ) {
 
-        $stmt = $pdo->prepare("
+        // see if email already exisits and insert if not
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? LIMIT 1");
+        $stmt->execute([$email]);
+        $existing = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($existing) {
+            $emailError = "An account with that email already exists!";
+        } else {
+            $stmt = $pdo->prepare("
             INSERT INTO users (first_name, last_name, email, password)
             VALUES (?, ?, ?, ?)
-        ");
+            ");
 
-        try {
-            $stmt->execute([$first_name, $last_name, $email, $password]);
+            try {
+                $stmt->execute([$first_name, $last_name, $email, $password]);
 
-            header("Location: index.php?page=login");
-            exit;
+                header("Location: index.php?page=login&email=" . $email);
+                exit;
 
-        } catch (PDOException $e) {
-            if ($e->errorInfo[1] == 1062) {
-                // duplicate email error
-                $emailError = "An account with that email already exists.";
-            } else {
-                // general error
+            // catch the error
+            } catch (PDOException $e) {
                 $errors[] = "Database error: " . $e->getMessage();
             }
         }
