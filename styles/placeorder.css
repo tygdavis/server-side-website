@@ -1,0 +1,91 @@
+.thankyou-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 40px 20px;
+	min-height: 70vh;
+	background: #faf8f5;
+}
+
+.thankyou-card {
+	background: white;
+	padding: 40px 30px;
+	border-radius: 18px;
+	max-width: 450px;
+	width: 100%;
+	text-align: center;
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.08);
+	animation: fadeIn 0.7s ease;
+}
+
+.checkmark {
+	width: 85px;
+	height: 85px;
+	border-radius: 50%;
+	background: #4caf50;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto 20px;
+	box-shadow: 0px 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.checkmark span {
+	color: white;
+	font-size: 45px;
+	font-weight: bold;
+}
+
+.thankyou-card h1 {
+	margin: 0;
+	font-size: 32px;
+	color: #333;
+}
+
+.subtitle {
+	color: #666;
+	margin-top: 8px;
+	margin-bottom: 25px;
+	font-size: 16px;
+}
+
+.order-details p {
+	margin: 6px 0;
+	font-size: 17px;
+	color: #444;
+}
+
+.message {
+	margin-top: 12px;
+	font-size: 18px;
+	color: #444;
+	font-weight: 500;
+}
+
+.home-btn {
+	margin-top: 25px;
+	display: inline-block;
+	background: #c49b63;
+	color: white;
+	padding: 12px 26px;
+	border-radius: 25px;
+	text-decoration: none;
+	font-size: 16px;
+	transition: 0.25s;
+}
+
+.home-btn:hover {
+	transform: translateY(-2px);
+	background: #b0854e;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
