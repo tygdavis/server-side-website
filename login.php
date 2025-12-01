@@ -12,7 +12,10 @@ if (isset($_COOKIE['visited_before'])) {
 }
 
 // if being redirected from register.php, fill the email field
-$registerEmail = $_GET['email'];
+if (isset($_GET['email'])) {
+    $registerEmail = $_GET['email'];
+}
+
 
 $emailError    = "";
 $passwordError = "";

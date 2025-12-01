@@ -15,8 +15,8 @@ function pdo_connect_mysql() {
 }
 
 function template_header($page) {
-    $globalCss = "./styles/style.css";
-    $pageCss   = "./styles/$page.css";
+    $globalCss = "styles/style.css";
+    $pageCss   = "styles/$page.css";
     ?>
 <!DOCTYPE html>
 <html>
@@ -65,16 +65,15 @@ function template_header($page) {
     <?php } ?>
 
     <?php
-    function template_footer() {
-    ?>
-</main>
+    function template_footer() { ?>
+        </main>
 
-<footer>
-    <p>&copy; <?= date("Y") ?> Bread Co</p>
-</footer>
+        <footer>
+            <p>&copy; <?= date("Y") ?> Bread Co</p>
+        </footer>
 
-<script src="./js/header.js"></script>
-<script src="./js/passwordVisibility.js"></script>
-</body>
-</html>
-<?php } ?>
+        <script src="./js/header.js"></script>
+        <script src="./js/passwordVisibility.js"></script>
+        </body>
+        </html>
+    <?php } ?>

@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const value = input.value.trim();
 		clearError(input);
 
-		// First name
+		// First name validation
 		if (input === firstInput) {
 			if (value === "") {
 				setError(input, "First name is required.");
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		}
 
-		// Last name
+		// Last name validation
 		if (input === lastInput) {
 			if (value === "") {
 				setError(input, "Last name is required.");
@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			}
 		}
 
-		// Email
+		// email
 		if (input === emailInput) {
 			if (value === "") {
 				setError(input, "Email is required.");
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		return true;
 	}
 
-	// Validate on blur
+	// run on blur
 	[firstInput, lastInput, emailInput, phoneInput, messageInput].forEach(
 		(input) => {
 			if (!input) return;
@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		}
 	);
 
-	// Validate on submit
+	// on submit
 	form.addEventListener("submit", (e) => {
 		let isValid = true;
 
